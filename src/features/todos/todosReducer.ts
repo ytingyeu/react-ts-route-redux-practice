@@ -1,6 +1,6 @@
 import { AnyAction } from "redux";
-import { createTodo, removeTodo } from "./actions";
-import { ITodoListItem } from "./types";
+import { createTodo, removeTodo } from "./todosActions";
+import { ITodoListItem } from "./todosTypes";
 
 const initialState: ITodoListItem[] = [];
 

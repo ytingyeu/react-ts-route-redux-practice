@@ -2,7 +2,7 @@ import React from "react";
 import TodoListItem from "./TodoListItem";
 import { Dispatch } from "redux";
 import { TRootState } from "src/app/store";
-import { removeTodo } from "./actions";
+import { removeTodo } from "./todosActions";
 import { connect, ConnectedProps } from "react-redux";
 
 const mapStateToProps = (state: TRootState) => ({

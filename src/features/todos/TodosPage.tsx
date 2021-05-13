@@ -3,7 +3,7 @@ import React from "react";
 import NewTodoForm from "./NewTodoForm";
 import TodoList from "./TodoList";
 
-const TodoPage = () => {
+const TodosPage = () => {
   return (
     <div className="todo-page">
       <NewTodoForm />
@@ -12,4 +12,4 @@ const TodoPage = () => {
   );
 };
 
-export default TodoPage;
+export default TodosPage;

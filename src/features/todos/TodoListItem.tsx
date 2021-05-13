@@ -1,6 +1,6 @@
 import React from "react";
-import { ITodoListItem } from "./types";
-import { TRemoveTodo } from "./actions";
+import { ITodoListItem } from "./todosTypes";
+import { TRemoveTodo } from "./todosActions";
 
 interface ITodoListItemProps {
   todo: ITodoListItem;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Dispatch } from "redux";
 import { connect, ConnectedProps } from "react-redux";
-import { createTodo } from "./actions";
+import { createTodo } from "./todosActions";
 import { TRootState } from "src/app/store";
 
 // interface IComponentState {}
