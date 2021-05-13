@@ -7,7 +7,7 @@ const TodoPage = () => {
   return (
     <div className="todo-page">
       <NewTodoForm />
-      <TodoList todos={[]} />
+      <TodoList />
     </div>
   );
 };
