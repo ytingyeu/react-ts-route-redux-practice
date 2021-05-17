@@ -1,5 +1,3 @@
-import React from "react";
-
 import NewTodoForm from "./NewTodoForm";
 import TodoList from "./TodoList";
 
