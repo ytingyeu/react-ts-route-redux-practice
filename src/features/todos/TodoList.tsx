@@ -1,8 +1,7 @@
-import React from "react";
 import TodoListItem from "./TodoListItem";
 import { Dispatch } from "redux";
 import { TRootState } from "src/app/store";
-import { removeTodo } from "./todosActions";
+import { removeTodo, markAsCompleted } from "./todosActions";
 import { connect, ConnectedProps } from "react-redux";
 
 const mapStateToProps = (state: TRootState) => ({
@@ -11,6 +10,7 @@ const mapStateToProps = (state: TRootState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   onRemovePressed: (text: string) => dispatch(removeTodo({ value: text })),
+  onMarkAsCompletedPressed: (text: string) => dispatch(markAsCompleted({ value: text })),
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -21,11 +21,20 @@ type TProps = PropsFromRedux & {
   // add non-redux props here
 };
 
-const TodoList = ({ todos, onRemovePressed }: TProps) => {
+const TodoList = ({
+  todos,
+  onRemovePressed,
+  onMarkAsCompletedPressed,
+}: TProps) => {
   return (
     <div className="list-wrapper">
       {todos.map((todo) => (
-        <TodoListItem todo={todo} onRemovePressed={onRemovePressed} />
+        <TodoListItem
+          key={todo.text}
+          todo={todo}
+          onRemovePressed={onRemovePressed}
+          onMarkAsCompletedPressed={onMarkAsCompletedPressed}
+        />
       ))}
     </div>
   );
