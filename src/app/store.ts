@@ -1,15 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
+import thunk from "redux-thunk";
 import { todosReducer } from "src/features/todos/todosReducer";
 
-// For details about ConfigureStoreOptions,
+// For details about configureStore,
 // visits https://redux-toolkit.js.org/api/configureStore
-const reduxOptions = {
+export const store = configureStore({
   reducer: {
     todos: todosReducer,
   },
-};
-
-export const store = configureStore(reduxOptions);
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+});
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type TRootState = ReturnType<typeof store.getState>;
