@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Dispatch } from "redux";
 import { connect, ConnectedProps } from "react-redux";
 import { createTodo } from "./todosActions";
