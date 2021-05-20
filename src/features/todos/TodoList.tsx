@@ -13,7 +13,7 @@ const mapStateToProps = (state: TRootState) => ({
   todos: state.todos,
 });
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, Action>) => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<TRootState, null, Action>) => ({
   onRemovePressed: (text: string) => dispatch(removeTodo({ value: text })),
   onMarkAsCompletedPressed: (text: string) =>
     dispatch(markAsCompleted({ value: text })),
