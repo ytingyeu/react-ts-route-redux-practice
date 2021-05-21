@@ -10,17 +10,18 @@ export const removeTodo = createAction<{ value: string }>(REMOVE_TODO);
 export type TRemoveTodo = ReturnType<typeof removeTodo>;
 
 export const MARK_AS_COMPLETED = "MARK_AS_COMPLETED";
-export const markAsCompleted = createAction<{ value: string }>(MARK_AS_COMPLETED);
+export const markAsCompleted =
+  createAction<{ value: string }>(MARK_AS_COMPLETED);
 export type TMarkAsCompleted = ReturnType<typeof markAsCompleted>;
 
-export const FETCH_TODOS_IN_PROGRESS = "FETCH_TODOS_IN_PROGRESS";
-export const fetchTodosInProgress = createAction(FETCH_TODOS_IN_PROGRESS);
-export type TFetchTodosInProgress = ReturnType<typeof fetchTodosInProgress>;
-
 export const FETCH_TODOS_SUCCESS = "FETCH_TODOS_SUCCESS";
-export const fetchTodosSuccess = createAction<ITodoListItem[]>(FETCH_TODOS_SUCCESS);
+export const fetchTodosSuccess =
+  createAction<ITodoListItem[]>(FETCH_TODOS_SUCCESS);
 export type TFetchTodosSucess = ReturnType<typeof fetchTodosSuccess>;
 
 export const FETCH_TODOS_FAILUARE = "FETCH_TODOS_FAILUARE";
-export const fetchTodosFailuare = createAction<string>(FETCH_TODOS_FAILUARE);
+export const fetchTodosFailuare =
+  createAction<string | { status: number; statusText: string }>(
+    FETCH_TODOS_FAILUARE
+  );
 export type TFetchTodosFailuare = ReturnType<typeof fetchTodosFailuare>;

@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { todosReducer } from "src/features/todos/todosReducer";
+import { isFetchingReducer } from "src/common/sharedRedux/sharedReducers";
 
 // For details about configureStore,
 // visits https://redux-toolkit.js.org/api/configureStore
 export const store = configureStore({
   reducer: {
     todos: todosReducer,
+    isFetching: isFetchingReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 });

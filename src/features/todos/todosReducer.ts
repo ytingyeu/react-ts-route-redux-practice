@@ -1,3 +1,5 @@
+import { createReducer } from "@reduxjs/toolkit";
+
 import {
   createTodo,
   removeTodo,
@@ -5,7 +7,6 @@ import {
   fetchTodosSuccess,
   fetchTodosFailuare,
 } from "./todosActions";
-import { createReducer } from "@reduxjs/toolkit";
 
 import { ITodoListItem } from "./todosTypes";
 
@@ -41,52 +42,8 @@ export const todosReducer = createReducer(initialState, (builder) => {
       return todos;
     })
     .addCase(fetchTodosFailuare, (_state, action) => {
-      const message = action.payload;
-      console.error(message);
+      const error = action.payload;
+      console.log(error);
     })
     .addDefaultCase((state, _action) => state);
 });
-
-/*----- without createReducer() -----*/
-// export const todosReducer = (
-//   state = initialState,
-//   action: AnyAction
-// ) => {
-//   if (createTodo.match(action)) {
-//     const text: string = action.payload.value;
-//     const newTodo: ITodoListItem = {
-//       text: text,
-//       isCompleted: false,
-//     };
-//     return state.concat(newTodo);
-//   }
-
-//   if (removeTodo.match(action)) {
-//     const text = action.payload.value;
-//     return state.filter((todo) => todo.text !== text);
-//   }
-
-//   if (markAsCompleted.match(action)) {
-//     const text = action.payload.value;
-
-//     return state.map((todo) => {
-//       if (todo.text === text) {
-//         return { ...todo, isCompleted: true };
-//       }
-
-//       return todo;
-//     });
-//   }
-
-//   if (fetchTodosSuccess.match(action)) {
-//     const todos = action.payload.value;
-//     return todos;
-//   }
-
-//   if (fetchTodosFailuare.match(action)) {
-//     const message = action.payload.value;
-//     console.log(message);
-//   }
-
-//   return state;
-// };

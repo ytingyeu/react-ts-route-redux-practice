@@ -36,7 +36,7 @@ const TodoList = ({
 }: TProps) => {
   useEffect(() => {
     initTodoList();
-  }, []);
+  }, [initTodoList]);
 
   return (
     <div className="list-wrapper">
