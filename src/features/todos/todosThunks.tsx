@@ -1,13 +1,14 @@
 import axios from "axios";
 
-import { fetchTodosSuccess, fetchTodosFailuare } from "./todosActions";
+import { fetchTodosSuccess } from "./todosActions";
 
 import {
   fetchInProgress,
   fetchTerminated,
+  requestFailure,
 } from "src/common/sharedRedux/sharedActions";
 
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 // import { Dispatch } from "redux";
 // import { TRootState } from "src/app/store";
 
@@ -22,20 +23,26 @@ export const fetchTodosThunk = createAsyncThunk(
     thunkApi.dispatch(fetchInProgress());
 
     try {
-      const response = await axios.get(`${apiBaseUrl}/todo`);
+      const response = await axios.get(`${apiBaseUrl}/todos`);
       thunkApi.dispatch(fetchTodosSuccess(response.data));
     } catch (error) {
       if (error.response) {
         const { status, statusText } = error.response;
 
         const errorInfo = {
+          isFailure: true,
           status: status,
-          statusText: statusText,
+          message: statusText,
         };
 
-        thunkApi.dispatch(fetchTodosFailuare(errorInfo));
+        thunkApi.dispatch(requestFailure(errorInfo));
       } else {
-        thunkApi.dispatch(fetchTodosFailuare(error.message));
+        const errorInfo = {
+          isFailure: true,
+          message: error.message,
+        };
+
+        thunkApi.dispatch(requestFailure(errorInfo));
       }
     } finally {
       thunkApi.dispatch(fetchTerminated());

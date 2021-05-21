@@ -4,8 +4,7 @@ import {
   createTodo,
   removeTodo,
   markAsCompleted,
-  fetchTodosSuccess,
-  fetchTodosFailuare,
+  fetchTodosSuccess
 } from "./todosActions";
 
 import { ITodoListItem } from "./todosTypes";
@@ -40,10 +39,6 @@ export const todosReducer = createReducer(initialState, (builder) => {
     .addCase(fetchTodosSuccess, (_state, action) => {
       const todos = action.payload;
       return todos;
-    })
-    .addCase(fetchTodosFailuare, (_state, action) => {
-      const error = action.payload;
-      console.log(error);
     })
     .addDefaultCase((state, _action) => state);
 });
